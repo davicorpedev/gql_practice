@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gql_app/application/city/city_list_cubit.dart';
+import 'package:gql_app/domain/entities/city.dart';
 import 'package:gql_app/domain/entities/country.dart';
 import 'package:gql_app/injection_container.dart';
 import 'package:gql_app/presentation/pages/job/jobs_by_city_page.dart';
@@ -8,7 +9,8 @@ import 'package:gql_app/presentation/pages/job/jobs_by_city_page.dart';
 class CitiesByCountryPage extends StatefulWidget {
   final Country country;
 
-  const CitiesByCountryPage({Key? key, required this.country}) : super(key: key);
+  const CitiesByCountryPage({Key? key, required this.country})
+      : super(key: key);
 
   @override
   _CitiesByCountryPageState createState() => _CitiesByCountryPageState();
@@ -31,12 +33,7 @@ class _CitiesByCountryPageState extends State<CitiesByCountryPage> {
                   return ListTile(
                     title: Text(state.cities[index].name),
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                JobListPage(city: state.cities[index])),
-                      );
+                      navigate(state.cities[index]);
                     },
                   );
                 },
@@ -51,6 +48,13 @@ class _CitiesByCountryPageState extends State<CitiesByCountryPage> {
           },
         ),
       ),
+    );
+  }
+
+  void navigate(City city) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => JobListPage(city: city)),
     );
   }
 }

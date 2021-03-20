@@ -1,5 +1,5 @@
 const String getCitiesByCountryQuery = r'''
-  query GetCitiesByCountry($slug: String!) {
+  query ($slug: String!) {
     country(input: {slug: $slug}) {
       cities{id, name, slug}
     }

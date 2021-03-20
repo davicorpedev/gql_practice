@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gql_app/application/country/country_list_cubit.dart';
+import 'package:gql_app/domain/entities/country.dart';
 import 'package:gql_app/injection_container.dart';
 import 'package:gql_app/presentation/pages/city/cities_by_country_page.dart';
 
@@ -25,12 +26,7 @@ class _CountriesPageState extends State<CountriesPage> {
                   return ListTile(
                     title: Text(state.countries[index].name),
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => CitiesByCountryPage(
-                                country: state.countries[index])),
-                      );
+                      navigate(state.countries[index]);
                     },
                   );
                 },
@@ -45,6 +41,14 @@ class _CountriesPageState extends State<CountriesPage> {
           },
         ),
       ),
+    );
+  }
+
+  void navigate(Country country) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+          builder: (context) => CitiesByCountryPage(country: country)),
     );
   }
 }

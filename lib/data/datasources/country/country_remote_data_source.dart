@@ -4,10 +4,6 @@ import 'package:gql_app/data/datasources/country/queries/get_countries_query.dar
 import 'package:gql_app/data/models/country_model.dart';
 import 'package:graphql/client.dart';
 
-QueryOptions getCountriesOptions() {
-  return QueryOptions(document: gql(getCountriesQuery));
-}
-
 class CountryRemoteDataSource {
   final JobsApiClient apiClient;
 
@@ -24,4 +20,8 @@ class CountryRemoteDataSource {
         .map<CountryModel>((country) => CountryModel.fromJson(country))
         .toList();
   }
+}
+
+QueryOptions getCountriesOptions() {
+  return QueryOptions(document: gql(getCountriesQuery));
 }

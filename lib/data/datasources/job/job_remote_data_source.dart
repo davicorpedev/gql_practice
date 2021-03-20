@@ -4,13 +4,6 @@ import 'package:gql_app/data/datasources/job/queries/get_jobs_by_city_query.dart
 import 'package:gql_app/data/models/job_model.dart';
 import 'package:graphql/client.dart';
 
-QueryOptions getJobsByCityOptions(String slug) {
-  return QueryOptions(
-    document: gql(getJobsByCityQuery),
-    variables: <String, dynamic>{'slug': slug},
-  );
-}
-
 class JobRemoteDataSource {
   final JobsApiClient apiClient;
 
@@ -27,4 +20,11 @@ class JobRemoteDataSource {
         .map<JobModel>((country) => JobModel.fromJson(country))
         .toList();
   }
+}
+
+QueryOptions getJobsByCityOptions(String slug) {
+  return QueryOptions(
+    document: gql(getJobsByCityQuery),
+    variables: <String, dynamic>{'slug': slug},
+  );
 }

@@ -1,5 +1,5 @@
 const String getJobsByCityQuery = r'''
-  query GetJobsByCity($slug: String!){
+  query ($slug: String!){
     city(input:{slug: $slug}){
       jobs {id, title}
     }
