@@ -1,12 +1,12 @@
 import 'package:equatable/equatable.dart';
 
-const String SERVER_FAILURE_MESSAGE = "Server Failure";
+const String API_FAILURE_MESSAGE = "Server Failure";
 const String NETWORK_FAILURE_MESSAGE = "Network Failure";
 
 String mapFailureToMessage(Failure failure) {
   switch (failure.runtimeType) {
-    case ServerFailure:
-      return SERVER_FAILURE_MESSAGE;
+    case ApiFailure:
+      return API_FAILURE_MESSAGE;
     case NetworkFailure:
       return NETWORK_FAILURE_MESSAGE;
     default:
@@ -19,6 +19,6 @@ abstract class Failure extends Equatable {
   List<Object> get props => [];
 }
 
-class ServerFailure extends Failure {}
+class ApiFailure extends Failure {}
 
 class NetworkFailure extends Failure {}

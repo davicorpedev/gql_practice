@@ -1,4 +1,5 @@
 import 'package:gql_app/data/core/api_client/jobs_api_client.dart';
+import 'package:gql_app/data/core/error/exceptions.dart';
 import 'package:gql_app/data/datasources/country/queries/get_countries_query.dart';
 import 'package:gql_app/data/models/country_model.dart';
 import 'package:graphql/client.dart';
@@ -14,7 +15,7 @@ class CountryRemoteDataSource {
     final result = await apiClient.query(getCountriesOptions);
 
     if (result.hasException) {
-      throw ServerException();
+      throw ApiException();
     }
 
     return result.data!["countries"]

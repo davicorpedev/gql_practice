@@ -40,12 +40,12 @@ void main() {
       },
     );
 
-    test("should return a ServerFailure when the request fails", () async {
-      when(remoteDataSource.getCountries()).thenThrow(ServerException());
+    test("should return a ApiFailure when the request fails", () async {
+      when(remoteDataSource.getCountries()).thenThrow(ApiException());
 
       final result = await repository.getCountries();
 
-      expect(result, Left(ServerFailure()));
+      expect(result, Left(ApiFailure()));
     });
 
     test("should return a NetworkFailure when the user has no internet",

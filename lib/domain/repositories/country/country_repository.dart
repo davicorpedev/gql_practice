@@ -16,8 +16,8 @@ class CountryRepository {
       final result = await remoteDataSource.getCountries();
 
       return Right(result);
-    } on ServerException {
-      return Left(ServerFailure());
+    } on ApiException {
+      return Left(ApiFailure());
     } on SocketException {
       return Left(NetworkFailure());
     }
