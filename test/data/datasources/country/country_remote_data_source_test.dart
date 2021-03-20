@@ -23,7 +23,7 @@ void main() {
   });
 
   group("getCountries", () {
-    final tCountryModelList = [CountryModel(id: "test", name: "test")];
+    final tCountryModelList = [CountryModel(id: "test", name: "test", slug: "test")];
 
     test("should call the client and the query is getCountriesQuery", () async {
       when(client.query(any)).thenAnswer(
@@ -35,7 +35,7 @@ void main() {
 
       await dataSource.getCountries();
 
-      verify(client.query(getCountriesOptions));
+      verify(client.query(getCountriesOptions()));
     });
 
     test("should return a List of Country when the request is successful",

@@ -9,7 +9,7 @@ import 'package:gql_app/domain/entities/country.dart';
 import '../../fixtures/fixture_reader.dart';
 
 void main() {
-  final tCountryModel = CountryModel(id: "test", name: "test");
+  final tCountryModel = CountryModel(id: "test", name: "test", slug: "test");
 
   test("should be a subclass of Country entity", () async {
     expect(tCountryModel, isA<Country>());

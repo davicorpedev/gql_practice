@@ -23,7 +23,9 @@ void main() {
   });
 
   group("getCountries", () {
-    final tCountryModelList = [CountryModel(id: "test", name: "test")];
+    final tCountryModelList = [
+      CountryModel(id: "test", name: "test", slug: "test"),
+    ];
 
     final tCountryList = tCountryModelList;
 

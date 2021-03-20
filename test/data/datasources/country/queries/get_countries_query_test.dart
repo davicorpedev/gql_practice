@@ -10,7 +10,7 @@ void main() {
   });
 
   test("should return a valid response", () async {
-    final result = await apiClient.query(getCountriesOptions);
+    final result = await apiClient.query(getCountriesOptions());
 
     expect(result.hasException, false);
     expect(result.data!.isNotEmpty, true);
