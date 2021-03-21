@@ -1,7 +1,8 @@
 import 'package:get_it/get_it.dart';
 import 'package:gql_app/application/city/city_list_cubit.dart';
 import 'package:gql_app/application/country/country_list_cubit.dart';
-import 'package:gql_app/application/job/job_list_cubit.dart';
+import 'package:gql_app/application/job/job_details/job_details_cubit.dart';
+import 'package:gql_app/application/job/job_list/job_list_cubit.dart';
 import 'package:gql_app/data/core/api_client/jobs_api_client.dart';
 import 'package:gql_app/data/datasources/city/city_remote_data_source.dart';
 import 'package:gql_app/data/datasources/country/country_remote_data_source.dart';
@@ -29,6 +30,7 @@ Future<void> init() async {
   ///Job
   //Cubit
   sl.registerFactory<JobListCubit>(() => JobListCubit(repository: sl()));
+  sl.registerFactory<JobDetailsCubit>(() => JobDetailsCubit(repository: sl()));
 
   //Repository
   sl.registerLazySingleton<JobRepository>(

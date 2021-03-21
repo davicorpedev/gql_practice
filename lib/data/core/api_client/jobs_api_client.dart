@@ -8,8 +8,12 @@ class JobsApiClient {
   factory JobsApiClient.create() {
     final httpLink = HttpLink('https://api.graphql.jobs');
     final link = Link.from([httpLink]);
+
     return JobsApiClient(
-      graphQLClient: GraphQLClient(cache: GraphQLCache(), link: link),
+      graphQLClient: GraphQLClient(
+        link: link,
+        cache: GraphQLCache(),
+      ),
     );
   }
 

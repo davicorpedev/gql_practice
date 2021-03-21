@@ -22,4 +22,19 @@ class JobRepository {
       return Left(NetworkFailure());
     }
   }
+
+  Future<Either<Failure, Job>> getJobDetails(
+    String companySlug,
+    String jobSlug,
+  ) async {
+    try {
+      final result = await remoteDataSource.getJobDetails(companySlug, jobSlug);
+
+      return Right(result);
+    } on ApiException {
+      return Left(ApiFailure());
+    } on SocketException {
+      return Left(NetworkFailure());
+    }
+  }
 }

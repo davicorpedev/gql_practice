@@ -25,9 +25,7 @@ class _CountriesPageState extends State<CountriesPage> {
                 itemBuilder: (BuildContext context, int index) {
                   return ListTile(
                     title: Text(state.countries[index].name),
-                    onTap: () {
-                      navigate(state.countries[index]);
-                    },
+                    onTap: () => navigate(state.countries[index]),
                   );
                 },
               );
@@ -37,7 +35,7 @@ class _CountriesPageState extends State<CountriesPage> {
               return Center(child: Text(state.message));
             }
 
-            return Container();
+            return Center(child: Text("Empty"));
           },
         ),
       ),
