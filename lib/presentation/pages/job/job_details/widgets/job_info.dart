@@ -22,7 +22,6 @@ class JobInfo extends StatelessWidget {
             title: Text(job.company.name),
             subtitle: Text(job.company.websiteUrl!),
           ),
-
           ListTile(
             title: Text("Apply here"),
             subtitle: Text(job.applyUrl!),
